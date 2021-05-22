@@ -1,0 +1,25 @@
+{# /templates/form/new_article.html.twig #}
+<html>
+<head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+ <div class="container">
+ <div class="row">
+
+ {{ form_start(form, {
+ 'attr': {
+ 'novalidate': 'novalidate',
+ 'class': 'col-lg-5 shadow'
+ }
+ })
+ }}
+ {{ form_row(form.title) }}
+ {{ form_row(form.content) }}
+ {{ form_row(form.author) }}
+ <button type="submit" class="btn btn-primary">Créer</button>
+ {{ form_end(form) }}
+ </div>
+ </div>
+</body>
+</html>

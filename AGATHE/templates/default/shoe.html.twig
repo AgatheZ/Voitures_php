@@ -1,0 +1,33 @@
+{# /templates/form/new_article.html.twig #}
+<html>
+<head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+ <div class="container">
+ <div class="row">
+
+ {{ form_start(shoe, {
+ 'attr': {
+ 'novalidate': 'novalidate',
+ 'class': 'col-lg-5 shadow'
+ }
+ })
+ }}
+ {{ form_row(shoe.name) }}
+ {{ form_row(shoe.description }}
+ {{ form_row(shoe.price) }}
+
+<h3>Sizes</h3>
+<ul class = "sizes">
+{% for size in shoe.sizes %}
+    <li>{{form_row(size.value)}}</li>
+    {% endfor%}
+    </ul>
+
+ <button type="submit" class="btn btn-primary">Créer</button>
+ {{ form_end(form) }}
+ </div>
+ </div>
+</body>
+</html>
