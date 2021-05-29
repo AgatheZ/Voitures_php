@@ -3,49 +3,90 @@
 {% block title %}Liste Clients{% endblock %}
 
 {% block body %}
-    <h1>Liste Clients</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Identifiant </th>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Numéro </th>
-                <th>Rue</th>
-                <th>Code Postal</th>
-                <th>Ville</th>
-                <th>N°téléphone</th>
-                <th>N° permis</th>
-                <th>Date permis</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for client in clients %}
-            <tr>
-                <td>{{ client.id }}</td>
-                <td>{{ client.prenom }}</td>
-                <td>{{ client.nom }}</td>
-                <td>{{ client.numClient }}</td>
-                <td>{{ client.rue }}</td>
-                <td>{{ client.codePostal }}</td>
-                <td>{{ client.ville }}</td>
-                <td>{{ client.numTel }}</td>
-                <td>{{ client.numPermis }}</td>
-                <td>{{ client.datePermis ? client.datePermis|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('client_show', {'id': client.id}) }}">show</a>
-                    <a href="{{ path('client_edit', {'id': client.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="11">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('client_new') }}">Create new</a>
+
+<div class="container">
+    <div class="container-fluid p-0">
+		<div class="row">
+			<div class="col-xl-15 mt-5">
+				<div class="card">
+					<div class="card-header pb-0">
+						<div class="card-actions float-right">
+							<div class="dropdown show">
+								<a href="#" data-toggle="dropdown" data-display="static">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+								</a>
+
+								<div class="dropdown-menu dropdown-menu-right">
+									<a class="dropdown-item" href="{{ path('client_new') }}">Ajouter un Client</a>
+
+								</div>
+							</div>
+						</div>
+                
+						<h5 class="card-title mb-0">Clients</h5>
+					</div>
+					<div class="card-body">
+						<table class="table table-striped" style="width:100%">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Nom</th>
+									<th>Adresse</th>
+									<th>N° de téléphone</th>
+									<th>Numéro de permis</th>
+                                    <th>Date d'obtention</th>
+                                    <th>Administratif</th>
+                                    <th>Actions</th>
+
+								</tr>
+							</thead>
+                             
+							<tbody>
+                           {% for client in clients %}
+								<tr>
+									<td><img src="https://bootdey.com/img/Content/avatar/avatar1.png" href="#" width="40" height="40" class="rounded-circle my-n1" alt="Avatar"></td>
+									<td>{{client.prenom}} {{client.nom}}</td>
+									<td>{{client.numClient}} rue {{client.rue}} {{client.codePostal}} {{client.ville}}</td>
+									<td>{{client.numTel}}</td>
+                                    <td>{{client.numPermis}}</td>
+									<td><span class="badge bg-success">12/01/21</span></td>
+                                    <td><div class="btn-group">
+                                                    <button type="button" class="btn btn-info btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Contrats/Factures <span class="caret"></span></button>
+                                                   
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="{{path('contrat_index', {'id': client.id}) }}" title="Lien 1">Contrats</a></li>
+                                                        <li><a href="#" title="Lien 2">Factures</a></li>
+                                                    </ul>
+                                                    </div></a>
+                                    <td><div class="btn-group">
+                                                    <button type="button" class="btn btn-sm btn-info btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Actions <span class="caret"></span></button>
+                                                    
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="{{path('client_edit', {'id': client.id}) }}" title="Lien 1">Modifier le client</a></li>
+                                                        <li><a href="{{path('client_delete', {'id': client.id}) }}" title="Lien 2">Supprimer le client</a></li>
+                                                    </ul>
+                                                    </div></a>
+								</tr>
+								{% else %}
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+                        {% endfor %}
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+                
+                            
+					</div>
+				</div>
+			</div>
+		</div>
+        
+	</div>
+</div>
 {% endblock %}

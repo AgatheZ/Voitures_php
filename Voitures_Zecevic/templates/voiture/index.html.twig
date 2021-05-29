@@ -3,9 +3,9 @@
 {% block title %}Voiture index{% endblock %}
 
 {% block body %}
-    <h1>Voiture index</h1>
+    <h1 class="display-4 text-center mt-2 mb-5">Liste des voitures</h1>
 
-    <table class="table">
+    {# <table class="table">
         <thead>
             <tr>
                 <th>Identifiant</th>
@@ -16,26 +16,45 @@
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
-        {% for voiture in voitures %}
-            <tr>
-                <td>{{ voiture.id }}</td>
-                <td>{{ voiture.immatriculation }}</td>
-                <td>{{ voiture.marque }}</td>
-                <td>{{ voiture.carburant }}</td>
-                <td>{{ voiture.nombrePlaces }}</td>
-                <td>
-                    <a href="{{ path('voiture_show', {'id': voiture.id}) }}">show</a>
-                    <a href="{{ path('voiture_edit', {'id': voiture.id}) }}">edit</a>
-                </td>
-            </tr>
+       
+    </table> #}
+
+
+    {% for voiture in voitures %}
+    <div class="row col-sm-6">
+        <div class="col">
+            <div class="card border-info border-width-5 mb-3 "style="width: 18rem; length: 18rem;"> <img src=https://image.freepik.com/vecteurs-libre/image-tridimensionnelle-voiture-verte-isolee-fond-blanc_53876-40876.jpg class="card-img-top" width="100%">
+                <div class="card-body pt-0 px-0" >
+                    <div class="d-flex flex-column justify-content-between px-3 pb-3"> <center><small class="text-muted"><td><h6> Voiture n°{{voiture.id }}</center></h6></td></small></div>
+                    <hr class="mt-2 mx-2">
+                    <div class="d-flex flex-row justify-content-between p-3 mid">
+                        <div class="d-flex flex-column"><small class="text-muted mb-3"><th>Marque</th> <h6><td>{{voiture.marque}}</td></h6></small>
+                            <div class="d-flex flex-row"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBUVFRgSFRUYGRgYGhgaGhwYGBkYGRoVGRgcGRoZGBgcIS4lHB4sHxgYJjgmKy8xNTU1GiQ7QDs0Py40NTEBDAwMEA8QGBIRGDEhGCExNjQxNDE0MTQ/PzE0NDQ0NDE/PzE0PzwxNjU8NDYxNjVAMT80ND80MTQ1MTE/MTExP//AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEAAQUBAQAAAAAAAAAAAAAABgECAwQFBwj/xABIEAACAQIDBAYIBAQDAw0AAAABAgADEQQSIQUxQVEGEyJhcYEHMlJykaGxwSNCYtEUgpLwc7LhFaLCFiQlMzRTVGODs8PS4v/EABcBAQEBAQAAAAAAAAAAAAAAAAABAgT/xAAeEQEBAQABBAMAAAAAAAAAAAAAARESAiExYQMEQf/aAAwDAQACEQMRAD8A9miIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiUvArE4e2ulGEwv/X11VtewLs5/kW5kI2p6XaYuMPQZuTVDlH9I1+YgepxPBsZ6Ucc/qtTQfoT7sTORW6b45tTiX8jb6QPpCJ8z/8AK7G/+Jq/1mbNHpzj03Ylz71m+sD6PieEYL0qY5LZuqqD9SEH4qRJRsz0u0WsMRQenzZD1i/DQ/WB6fE4+x+kmFxQvQrI59nVWHijWM694FYiICIiAiIgIiICIiAiIgIiICIiAlIMgXSrpoVLYfB2ZxdXq6FKZGhCcGca9wtrfdA7/SLpVhsEt6z9si601s1Ru8LwHebCeR9I/SJjMTdKd8PTPBGOcj9VQWI/lt4mamIwLM5qOzO7m7MxuzHmf24Tl4moinKoDsP6B5jefD4yjlmm7EtqTvJJvr+pj95b1fff3dfnum0929Y37twHgBEDW6g+Hnf6S4YXmx8pmlpqCBjbCrwJ+UocL+qZOsHOXBxzEDW6hhwB8IHI6eOk27ypF98DFQVgQy3BG4i4I8CNRPQOjfTfF0AFc9egsLVGOcDuqG5P81/GQSndDdDbu3qfIzqYPaKHsOMjcD+Qnx/L5yD3jYnSGhilvTazAXZGsHUcyvEd4uJ2Z4LTzowdGKsuqspsQeYInofRfpjnK0MSQtQ6K9gFfkGA9R/keHKBN4lJWAiIgIiICIiAiIgIiICUgmQP0i9KmoAYLDt/ziqO0wOtKkdC/vHcPjA0umXSw1HfBYZrBezWqqdx400PP2mHgNd0RqYlKShVA0Gg3AAcSeCyzD0EoU7cFFyTxPEmRvH43rNFFgTdid78gf0jl3yjNjtptUuoPZO8i4zDkOS/WaQ0loltWpbxgXu4G+az4jlMLuTvlsgvZid5lBLbzr7JwaPSxDMGz06RdCGsoOg1UC51P+kDmS2dnBYWklMPXNutzBLLcrTS+Z1HBmYBAeAzGam18EtJ0C5rPTSoVaxZC9+wxAF9ADuG+XE1pqxG7SZUxB46zDKSK6CVAdxlxF9JzhNmlX4H4yjqbP2i1Gym7U+X5l93u7pJlCOmZCGVhw3HuP7SHibWzce1BrjVD66/8S94+clHrXRHpMylcLiGuNFpud/IJUJ48jx3HWxM9E8XAR0DKQysLgjcQRpJ50M26aq/w1Vr1UF1Y76lPdm95bgHxB4wJbERAREQEREBERAREoYHL6Q7XTCYd8Q+uUdleLudEQd5awnjeGpuzPiKpzVqrZ3PjYBR3AWHkJJOn+0v4jFLhVP4eG7T8mruNAfdX5vIttvHdWmVPXe6r+lfzN9h3kcoVx9t7RzsaSHsKe0fbcd/sj6zmy0IAAo3CUd7DvlQd7bprNEoZBYYgzar4QolOpe4qB+FsrI5VlPfuN++BrATqbIxipnpuOxVQU3YXuiFgSygbzpoJzBLlgdUbRpNietqIWprYJTUjRVAFNSCbZRvI46zU2lXWo5dS7ZtWNTJmLcfU0tutJHtOmBsrDNlFzUOthe163HyEiRlqQiJlXDsUapplVlTfqWYEgDnopMisVoEGIGehWtod03BOZNrCVPyny/aUd7o9tHq36pz2HPZvuRzw8DJXndGWpTOV0OZSd1xwP6SLg9xnn7pcWkw2Fj+tpdo9tOw/fb1W8xJVj2PZG0FxFJKybmG47ww0ZT3ggjym9PPegu0sldsMx7NW7p/iKO2B4qAf5TPQoQiIgIiICIiAmhtjaC4ehUrt6qKW8SBoPM2HnN+edemDaOTDU8MDrWqAt7lOz/5skCEbPdmzVHPbdmqOSb9tyWPlr8hI7jcR1tRqn5fVT3F4+ZufOdDE1ytFgNC4FMcCM2hI8FvOcyACw4QNcjjNR2vNjEvYW5/Sa1oFUQk2HGbYwYsb6n6HukhTZNLE4RamGTJWo6OlyS+8k34k7we4rwkfXFjLc7+X3mOve2Oz6l+G8ufn257LbTl9ZufxQOH6k3zLUzobaZWQq6k8NQh+M1qj3Nzxlom45OqTbx8KiVUSglwhEw2uP8AorC/4h/+aQ4zYbEuyCmXYopuqliVB11C7hvPxMwES1JMWzexVZeppUkINsz1OH4jkgL4qgA8zNGDIpAiVVbmw3nQd5OgA74FBKg21nc2xsFcNQps7/jublNCAljx5jTu1PKcIymunSe4BnQ2Jierrrf1XGQ+9vU/K3nOPgH3jzmzXU5Tl3jUe8NR9IE1qV2Rkqr61Nlded1Oo8xcec9kwldXRKim6uqsp/SwuPkZ4mlfOiuPzqD8f7M9K9HuKz4NVO+k70/5VN1H9LLMiUxEShERAREQE8L9K+OL7Q6sHs0aaIPfYl2+TIP5Z7hVqBQWO4C58BPmzpRiTUx2JqH81RvgAFA+AgK3aamvAKznxbsr8gZZUWZsMl3c+yqL/u3P1luKWwJ5AwONiXuxjD4d3bKiMzclBJt4CYp2+ixAeqWLBRh8RmKesFyale+Bbs2tiMFUWsabqPVIdWUOp1K3PHS48JudL6NBmTE0HW1YFmT8wa+rW4XOhHMHnORj6lIgdXUrPqbiplAGm8WY6/a80pfRn6pEqRKCQBOr0boK+KoU2AZWqICDuIvqCOM5Ynb6IpfG4fS/4inQX0AJJ0iCR7LwGLestOvhx1Rzhr0aai2RrdoDTtZZH8fhVXB0mdClZaj0m0tcIFezj2+3oeQnsVcdhrb8rWtzymeX9IsbTei9qiOaj4d0VWDOpWkEqF13puA15TVjMqHkShlxlDMtKSX9HsEmGpf7QxA1t+Aml2Yg2bxPDkLkyITI+IdlVGdiqXygkkLfU5RwvLKlmsu0se9eo1Woe03wAGgUdwE1hJLsolcJmSqlJjXILOoOZer9UEq3HWcLH1WZ2LOrndmUAK1tAQABp5RSLcI1nHw+M6wE4lI9oeI+skCrCuhsV/wQvsMy/A6fIiSvoLXK1awVrEdW41NiDmVgRuI7KyG7Ja3WLyqA/FB+0knQ+uoxLKSBnphRc72D3AHM75lXr+FrZkDnS/72mea2BFkXz+pmzKhERAREoYEY6ZbZSimQuqltTmIHZHjPBNokNWqMNQXYg8wTf7zf6VbQetiq1Rzc9Y4F9QFRiqgDkABOdlvY8wD8hA7Gy1u1T3l/yCV2rS/DcjlK7CN2qD3D8Vt9pu7WpXpVPdJ+GsKhImxg8Y9Js9NijWK3AU9k7xZgRNfhfh8ohG5i9pVaoCu+YA3tkprra29FB4zUi8Qq6W2lbwYGzszCddVSiGy52C3te1+NuM62G2URWSnTq1Uc9Ycz0WpWCIzEqc5zXy203XE5OzMZ1NZK1s2Rg1r2va+l+EzYPbLpWWuxL5S3ZdmIyOCGUE+rcHh3Qy6+zmxNVaTDE1F62t1IBdzlOTPmJDbtbWmp/shWqU6S1GzVHy9ug9MA663Y9ry5xh9uJSaiKdNxTpVDVIdwzu5GW2YKAAF0GkUttIlWnVBxD5HzZatVXFrG+TsjKdd/dKOM62JHIkfCWGbWOekxBpBxe5bOUbUnTLlUd+/umqZFLShiVvAztjGNIULDKKhqX1vmKZLcrWmtKkSggXUx2h4j6yUKkjeCTM6D9S/I3ksCSjQoPlap7y/5ZWlXIqUmU2IrULH/ANUf6zXDdpzzc/IAS7CC9SiOeIoDyDgmQfSOGHZXwmaY6Q0HgJkgIiICUMrKQPmTaaZsTUXnVcf77TLi8J1ZCfpBHhqPtKYr/tb/AOO//uGZNpY0VKrIPyAD63+doGXYlS1Yr7afNT/rJFUpBlKniCPiLSI0auR0qeywv7raH9/KTVReKqLbG6TNhk/hqmHp1EDNcNo2p1vdSGOnEcBynUR9kYn1lOHY773RQfEXQ+dpHuk2EyViQOy4DDx3MPj9ZxpdZTyv6PM4z4fEo6ndcAj+tCQfhOHjeh+Mp69SXHOmc/yHa+U5Gy9ovRcMjunPIxX48D5iTDAekHEUzkrKlZR+YgI9u8qLE+UL3QurSZDZ1ZTyYFT8DrLLz1zCdMNn4kZKoyE8KyKyeTi4+NplxXQvAVx1iItvaouQP6Qcvykw1427S7qWtc6Dv0v4CSXb+waeFqAK7P2cwDAaEkgajfuJ3cpwa1UnfA1cnIy03BsZkYTIiZxl4/lP28IGNWlWmJTMhMCoiAZn/hG6s1SQq7hfezch+8DAYlitz8/3mQmB0dg0c1TN7I+Z0H3klaygsdwBPkNZo9H8Llp5jvfXy4f33zLtqplp5eLkIPA6n5CUcjD+qCePa8ySfvNnZovisKn/AJyE+bqB/lPxmIS7YLZsfhhw6+io8nUSD6VG6XREBERAShlZQwPmPar5cRVblVc/B2mfob0ffGPWZd6U2y62DVT2rH+UH4iSvpl0CxKV3q0ENZKjlgEHbQsbkMt9Re/aHMXtJd6Mej1bDU3bEU8js5Ki6k5Sqi5y6D1YHj1SnvUjmD9D5yU9HcXnpBT66dlvLcfMTL6Rdhfw+JNRRanWLOumge93X4m48ZGdm43qKoqH1G7L+HBvL6GFSPpHs7raJyjtp2l7+Y8xPPLa2PGesK2l5Celex8jmsgORjqPZb9jwkKja0rHjbhaZXfMb+Q8BMdpUSovBmXDYp6bZ6bsjc0JUnxtv85gEQrp4naD1u3UYu+4k2uQNBunPbfFGpbQ7j9ZlZIRY26Uo7we+ZCkxuwUWG+BgbefE/WVJlkXgX3mXE1SyIoIsgOnjxmvKgwCDj3Td2VhTWqBTuvdj3f67ppqhYgC5J0AHPlJrsXACklj6x1J+3gJR0EQAADhpI9tKvnqm3qp2RyLHVj9vjOvtXF9Wmnrvog7+LeAkbtlW3z+pgdXYWyauLqdVRUFgC12OVQBxY+J8ZNuhno3rUcQmJxTJ+GcyJTJa78CxIFgN/eZ3/RnsA4bD9a62qVrNqLFaduwvjvY+PdJvIKCViICIiAiIgUtErEDhdLNiLi8O9LQOLtTJ4OBp5Hce4zwLE4dkZqbrZlJVgeBBsQZ9MmedeknomaoOMoLeoo/EUfnQC2YDiwHxHhAgfR7adrUHP8Ahk8V9k9871dFdSjC6sCCDxBkCbX6gjf4gzv7J2zmtTqGz7lPB/8A9QOJtvYrUjmXVOfEeP7zjT0pyCLHdIttXYW96Xmn/wBT9oVHolXQg2IIPIywQLpcHIlsAwL+sPOYzK3lDAtMpLogJVEJIAFyZmw2FZzYDSSTZ2AVNbdrn+0IpsbZYTttYufkO6derWVFLsbBf7AHfMVSqqKXc2Uf3p3zgYzFtVYMQQg9Vfue+BStXao5qNpwUeyvAePOSvoB0Z/i64qVFvQpEFr/AJ33qneOJ7vGcbo5sSpjKy0UHIu3Cml9WP2HEz3rZGzKeHpJQpiyqPMneWJ4knWBvgSsRAREQEREBERAREQEoRKxA8o6f9BiM2LwqdnfUpIuoPF0A3jiVHiJ5i4vof78J9SETz7pn6PVxBavhrJVNyynRKh7vYbv3HjzgeW4DbDIAlS7Lwb8w94cR3zrriFcZlIIPI3kcx+Eei7UqiMjrvVhY+PeO+ayMyG6MVPduPiIHfxtJHBDKD321+Mj+IwOU6HTvm4u0m3Ovmv7TDWxAbcfKBzitpSX1JhYSjJkO+2kplmMLL1WBkSleb+GwY4j7zXoqd/Dvm2mKVeJY8l1+e4QOrQQDcIxGPRNPWbgo3+Z4Ccp8W7aDsDu1bzPDymFFA/vX4wM1es7nM53blHqjw5nvnR2DsSti6opUlud7MR2EX2nP24zp9FOhtfGkP6lHi7cbbwg/Me/dPatibGo4WmKVFcq7yd7M3FmbiZBg6N7ApYOkKVMXJsXYizO1t55DfYcJ2ZWICIiAiIgIiICIiAiIgIiICIiBytt7Bw+LTJXQNb1WGjr3q28TyvpD6M8RRu+GPXp7JstQDw0DeVvCe0xA+W8VhXptldGQ8mUqfgZrsoO8T6e2hsqhXXJWpJUXk6g/A8JDdp+izCVLmkz0T+k51/pb94R4gaA5keBlpw3eZ6bjvRLiAPw69N9/rBkJ3W9oTjVvRttFdBTRvdqL97QqFjDd/yly0P1H5CS0ejzaX/cAeNRP3m5hvRjtBj2hSQfqe5+CgyiEikPHx1l4nqGA9EbXvXxQtp2aaf8TH7SYbK6B4ChYigtRhuar+IQeYDaDyEg8Y2L0axeKI6mixU/nbsIO8sd48Lz0/o36NKNEipiG65xbs7qQI7t7eemm6T5VA0AsBwAsJfAxogAAAsBoANAB4TJEQEREBERAREQEREBERAREQEREBERAREQEREBERApKxEBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERAREQEREBERA//Z" width="35px" height="35px">
+                                <div class="d-flex flex-column ml-1"><small class="ghj">Fonctionne à l'{{ voiture.carburant }}</small></div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column"><small class="text-muted mb-2"><td><th>Immatriculation</th> <h6><td>{{ voiture.immatriculation }}</td></h6></td></small>
+                            <div class="d-flex flex-row"><i class="bi bi-chat-quote text-info fs-2"></i>
+                                <h7 class="ml-1"><td>{{ voiture.nombrePlaces }} places*</td></h7>
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="d-flex flex-row justify-content-between p-3 mid">
+                       <td> 
+                        <div class="d-flex flex-column"><a type="submit" class="btn btn-secondary btn-block" href="{{path('voiture_edit', {'id': voiture.id})}}">Modifier</a></div>
+                        {{ include('voiture/_delete_form.html.twig') }}
+                        </td>
+                </div>
+                </div>
+            </div>
+        </div>
         {% else %}
             <tr>
                 <td colspan="6">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('voiture_new') }}">Create new</a>
+       
+    </div>
+
 {% endblock %}

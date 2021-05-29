@@ -3,9 +3,10 @@
 {% block title %}Nouvelle Voiture{% endblock %}
 
 {% block body %}
-    <h1>Ajouter une nouvelle voiture</h1>
+    <h1 class="display-4 text-center mt-2 mb-5">Ajouter une nouvelle voiture</h1>
 
+<div class="mx-auto" style="width: 500px;">
     {{ include('voiture/_form.html.twig') }}
-
-    <a href="{{ path('voiture_index') }}">back to list</a>
+    
+    </div>
 {% endblock %}

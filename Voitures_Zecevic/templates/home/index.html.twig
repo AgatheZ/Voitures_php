@@ -1,20 +1,125 @@
-{% extends 'base.html.twig' %}
+{% extends 'base2.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Business Frontpage - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+    
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-5">
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="text-center my-5">
+                            <h1 class="display-8 fw-bolder text-white mb-2">Gérez vos locations en un clic ! </h1>
+                            <p class="lead text-danger-100 mb-3" style = "color:gray;">Ce site internet vous permettra de facilement gérer tous vos clients, leurs contraits et factures mais également vos voitures et parkings!</p>
+                            <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                                <a class="btn btn-info  btn-lg px-4 me-sm-3 ml-2"  href="{{ path('app_register')}}">S'enregistrer</a>
+                                <a class="btn btn-outline-light btn-lg px-4 ml-2" href="{{ path('app_login')}}"> Se connecter</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Features section-->
+        <section class="py-5 border-bottom" id="features">
+            <div class="container px-5 my-5">
+                <div class="row gx-5">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <div class="feature bg-info bg-gradient text-white rounded-3 mb-3"><i class="bi bi-person-check-fill"></i></div>
+                        <h2 class="h4 fw-bolder">Gestion de vos clients</h2>
+                        <p>Un accès à tous les clients de l'entreprise, sans limitation de nombre.</p>
+                        <a class="text-decoration-none" href="{{ path('app_login')}}">
+                            Y accéder
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <div class="feature bg-info bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                        <h2 class="h4 fw-bolder">Gestion de vos parkings</h2>
+                        <p>Un accès à tous vos parkings, ainsi qu'aux voitures y étant stockées en temps réel.</p>
+                        <a class="text-decoration-none" href="{{ path('app_login')}}">
+                            Y accéder
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="feature bg-info bg-gradient text-white rounded-3 mb-3"><i class="bi bi-headset"></i></div>
+                        <h2 class="h4 fw-bolder">Service après-vente</h2>
+                        <p>Un service après vente à votre écoute 24h/24.</p>
+                        <a class="text-decoration-none" href="{{ path('app_login')}}">
+                            Y accéder
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials section-->
+        <section class="py-5 border-bottom">
+            <div class="container px-5 my-5 px-5">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bolder">De nombreux clients ravis</h2>
+                    <p class="lead mb-0">Témoignages</p>
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-6">
+                        <!-- Testimonial 1-->
+                        <div class="card mb-5">
+                            <div class="card-body p-4">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0"><i class="bi bi-chat-quote text-info fs-2"></i></div>
+                                    <div class="ms-4">
+                                        <p class="mb-3"> Ce site a révolutionné notre gestion de voitures, qui est désormais bien plus simple et intuitive !</p>
+                                        <div class="small text-muted">- Entreprise X, Paris</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 2-->
+                        <div class="card">
+                            <div class="card-body p-4">
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0"><i class="bi bi-chat-quote text-info fs-2"></i></div>
+                                    <div class="ms-4">
+                                        <p class="mb-1">Toute l'équipe a été d'une aide précieuse pour mettre en place les éléments essentiels de notre entreprise!</p>
+                                        <div class="small text-muted">- Entreprise Y, Saint-Etienne</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container px-5"><p class="m-0 text-center text-info">Copyright &copy; Agathe ZECEVIC 2021</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp64/www/Voitures_Zecevic/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp64/www/Voitures_Zecevic/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
 {% endblock %}

@@ -7,6 +7,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 
 class ClientType extends AbstractType
 {
@@ -21,7 +23,10 @@ class ClientType extends AbstractType
             ->add('ville')
             ->add('numTel')
             ->add('numPermis')
-            ->add('datePermis')
+            ->add('datePermis',  DateType::class, [
+                'widget' => 'single_text',
+                'input'  => 'datetime_immutable'
+            ])
         ;
     }
 

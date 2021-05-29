@@ -15,6 +15,7 @@ class VoitureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+        
             ->add('immatriculation')
             ->add('marque')
             ->add('carburant')

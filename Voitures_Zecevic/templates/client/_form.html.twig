@@ -1,4 +1,6 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="mb-auto" style="width: 200px;"><h2>
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    <button class="btn d-flex">{{ button_label|default('Enregistrer') }}</button>
+    </div></h2>
 {{ form_end(form) }}

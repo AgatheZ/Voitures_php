@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Contrat</h1>
-
+{% for contrat in contrats %}
     <table class="table">
         <tbody>
             <tr>
@@ -29,7 +29,7 @@
             </tr>
         </tbody>
     </table>
-
+{% endfor %}
     <a href="{{ path('contrat_index') }}">back to list</a>
 
     <a href="{{ path('contrat_edit', {'id': contrat.id}) }}">edit</a>
