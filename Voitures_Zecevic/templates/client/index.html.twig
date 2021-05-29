@@ -6,26 +6,18 @@
 
 
 
-<div class="container">
-    <div class="container-fluid p-0">
+<div class="px-5">
+    <div class="container-fluid px-5">
 		<div class="row">
-			<div class="col-xl-15 mt-5">
+			<div class="col-12 mt-5">
 				<div class="card">
-					<div class="card-header pb-0">
+					<div class="card-header">
 						<div class="card-actions float-right">
-							<div class="dropdown show">
-								<a href="#" data-toggle="dropdown" data-display="static">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-								</a>
-
-								<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" href="{{ path('client_new') }}">Ajouter un Client</a>
-
-								</div>
-							</div>
+						
+							<a class="dropdown-item bi bi-plus-square-fill h5" href="{{ path('client_new') }}" title="Ajouter un client"></a>
 						</div>
                 
-						<h5 class="card-title mb-0">Clients</h5>
+						<h5 class="card-title my-1 text-center">Clients</h5>
 					</div>
 					<div class="card-body">
 						<table class="table table-striped" style="width:100%">
@@ -38,7 +30,7 @@
 									<th>Numéro de permis</th>
                                     <th>Date d'obtention</th>
                                     <th>Administratif</th>
-                                    <th>Actions</th>
+                                    <th></th>
 
 								</tr>
 							</thead>
@@ -51,22 +43,28 @@
 									<td>{{client.numClient}} rue {{client.rue}} {{client.codePostal}} {{client.ville}}</td>
 									<td>{{client.numTel}}</td>
                                     <td>{{client.numPermis}}</td>
-									<td><span class="badge bg-success">12/01/21</span></td>
+									<td><span class="badge bg-success">{{client.datePermis|date('d-m-Y')}}</span></td>
                                     <td><div class="btn-group">
                                                     <button type="button" class="btn btn-info btn-sm btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Contrats/Factures <span class="caret"></span></button>
                                                    
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="{{path('contrat_index', {'id': client.id}) }}" title="Lien 1">Contrats</a></li>
-                                                        <li><a href="#" title="Lien 2">Factures</a></li>
-                                                    </ul>
+													<div class="dropdown-menu dropdown-menu-right">
+                                                        <a class="dropdown-item" href="{{path('contrat_show', {'id': client.id}) }}" title="Lien 1">Contrats</a>
+                                                        <a class="dropdown-item" href="{{path('facture_show', {'id': client.id}) }}" title="Lien 2">Factures</a>
+													</div>
                                                     </div></a>
                                     <td><div class="btn-group">
-                                                    <button type="button" class="btn btn-sm btn-info btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Actions <span class="caret"></span></button>
                                                     
-                                                    <ul class="dropdown-menu">
-                                                        <li><a href="{{path('client_edit', {'id': client.id}) }}" title="Lien 1">Modifier le client</a></li>
-                                                        <li><a href="{{path('client_delete', {'id': client.id}) }}" title="Lien 2">Supprimer le client</a></li>
-                                                    </ul>
+                                                    
+													<div class="dropdown show">
+														<a href="#" data-toggle="dropdown" data-display="static">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+														</a>
+														<div class="dropdown-menu">
+															<a class="dropdown-item" href="{{path('client_edit', {'id': client.id}) }}" title="Lien 1">Modifier le client</a>
+															<a class="dropdown-item" href="{{path('client_delete', {'id': client.id}) }}" title="Lien 2">Supprimer le client</a>
+														</div>
+
+													</div>
                                                     </div></a>
 								</tr>
 								{% else %}

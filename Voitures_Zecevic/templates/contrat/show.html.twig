@@ -3,36 +3,36 @@
 {% block title %}Contrat{% endblock %}
 
 {% block body %}
-    <h1>Contrat</h1>
-{% for contrat in contrats %}
+<div class="container-fluid px-5">
+    <h2 class="text-center font-weight-light mt-4 mb-5">Mes contrats</h2>
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ contrat.id }}</td>
-            </tr>
-            <tr>
-                <th>NumContrat</th>
-                <td>{{ contrat.numContrat }}</td>
-            </tr>
-            <tr>
+                <th>N° de contrat</th>
                 <th>Type</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th></th>
+            </tr>
+            {% for contrat in contrats %}
+            <tr>
+                <td>{{ contrat.numContrat }}</td>
                 <td>{{ contrat.type }}</td>
+                <td>{{ contrat.dateDebut ? contrat.dateDebut|date('d-m-Y') : '' }}</td>
+                <td>{{ contrat.dateFin ? contrat.dateFin|date('d-m-Y') : '' }}</td>
+                <td>
+                    <div class="d-inline-flex align-items-center">
+                            <a title="Modifier le contrat" class="mr-2" href="{{ path('contrat_edit', {'id': contrat.id}) }}">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+
+                    {{ include('contrat/_delete_form.html.twig') }}
+                    </div>
+                </td>
             </tr>
-            <tr>
-                <th>DateDebut</th>
-                <td>{{ contrat.dateDebut ? contrat.dateDebut|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>DateFin</th>
-                <td>{{ contrat.dateFin ? contrat.dateFin|date('Y-m-d') : '' }}</td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
-{% endfor %}
-    <a href="{{ path('contrat_index') }}">back to list</a>
-
-    <a href="{{ path('contrat_edit', {'id': contrat.id}) }}">edit</a>
-
-    {{ include('contrat/_delete_form.html.twig') }}
+    <a href="{{ path('contrat_index') }}">→ Voir tous les contrats</a>
+</div>
 {% endblock %}

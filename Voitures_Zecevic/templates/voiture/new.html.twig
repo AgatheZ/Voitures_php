@@ -3,10 +3,9 @@
 {% block title %}Nouvelle Voiture{% endblock %}
 
 {% block body %}
-    <h1 class="display-4 text-center mt-2 mb-5">Ajouter une nouvelle voiture</h1>
+    <h2 class="text-center font-weight-light mt-3 mb-4">Ajouter une nouvelle voiture</h2>
 
-<div class="mx-auto" style="width: 500px;">
-    {{ include('voiture/_form.html.twig') }}
-    
+    <div class="mx-auto" style="width: 500px;">
+        {{ include('voiture/_form.html.twig') }}
     </div>
 {% endblock %}

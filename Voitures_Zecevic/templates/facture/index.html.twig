@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Facture index{% endblock %}
+{% block title %}Mes factures{% endblock %}
 
 {% block body %}
-    <h1>Facture index</h1>
+    <h2 class="text-center font-weight-light mt-3 mb-4">Factures</h2>
 
     <table class="table">
         <thead>
@@ -22,7 +22,7 @@
             <tr>
                 <td>{{ facture.id }}</td>
                 <td>{{ facture.numfacture }}</td>
-                <td>{{ facture.dateFacture ? facture.dateFacture|date('Y-m-d') : '' }}</td>
+                <td>{{ facture.dateFacture ? facture.dateFacture|date('m-d-Y') : '' }}</td>
                 <td>{{ facture.kmCompteur }}</td>
                 <td>{{ facture.montantHT }}</td>
                 <td>{{ facture.montantTTC }}</td>

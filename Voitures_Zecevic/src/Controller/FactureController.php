@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Facture;
 use App\Form\FactureType;
 use App\Repository\FactureRepository;
+use App\Repository\ClientRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,11 +52,13 @@ class FactureController extends AbstractController
     /**
      * @Route("/{id}", name="facture_show", methods={"GET"})
      */
-    public function show(Facture $facture): Response
+    public function show(int $id, FactureRepository $factureRepository, ClientRepository $clientRepository): Response
     {
+        $client = $clientRepository->findOneBy(array('id' => $id));
         return $this->render('facture/show.html.twig', [
-            'facture' => $facture,
+            'factures' => $factureRepository->findBy(array('Client' => $client)),
         ]);
+        
     }
 
     /**

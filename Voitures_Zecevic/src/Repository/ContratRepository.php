@@ -22,19 +22,15 @@ class ContratRepository extends ServiceEntityRepository
     // /**
     //  * @return Contrat[] Returns an array of Contrat objects
     //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    // public function findByClient($value)
+    // {
+    //     return $this->createQueryBuilder('c')
+    //         ->where('c.Client = :val')
+    //         ->setParameter('val', $value)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
 
     /*
     public function findOneBySomeField($value): ?Contrat

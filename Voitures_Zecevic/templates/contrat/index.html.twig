@@ -3,31 +3,37 @@
 {% block title %}Contrat index{% endblock %}
 
 {% block body %}
-    <h1>Liste des contrats</h1>
+<div class="container-fluid px-5">
+    <h2 class="text-center font-weight-light mt-4 mb-5">Liste des contrats</h2>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Identifiant</th>
                 <th>N° de contrat</th>
+                <th>Client</th>
                 <th>Type</th>
                 <th>Date de début</th>
                 <th>Date de fin</th>
-                <th>Actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for contrat in contrats %}
             
             <tr>
-                <td>{{ contrat.id }}</td>
                 <td>{{ contrat.numContrat }}</td>
+                <td>{{ contrat.Client.prenom }} {{ contrat.Client.nom }}</td>
                 <td>{{ contrat.type }}</td>
-                <td>{{ contrat.dateDebut ? contrat.dateDebut|date('Y-m-d') : '' }}</td>
-                <td>{{ contrat.dateFin ? contrat.dateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ contrat.dateDebut ? contrat.dateDebut|date('d-m-Y') : '' }}</td>
+                <td>{{ contrat.dateFin ? contrat.dateFin|date('d-m-Y') : '' }}</td>
+                
                 <td>
-                    <a href="{{ path('contrat_show', {'id': contrat.id}) }}">show</a>
-                    <a href="{{ path('contrat_edit', {'id': contrat.id}) }}">edit</a>
+                <div class="d-inline-flex align-items-center">
+                            <a title="Modifier le contrat" class="mr-2" href="{{ path('contrat_edit', {'id': contrat.id}) }}">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            {{ include('contrat/_delete_form.html.twig') }}
+                             </div>
                 </td>
             </tr>
         {% else %}
@@ -38,5 +44,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('contrat_new') }}">Create new</a>
+    <a href="{{ path('contrat_new') }}">Nouveau contrat</a>
 {% endblock %}

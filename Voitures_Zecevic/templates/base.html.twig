@@ -9,6 +9,12 @@
 			{% block title %}Bienvenue
 			{% endblock %}
 		</title>
+		<!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
 		{# Run `composer require symfony/webpack-encore-bundle`
 																           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
@@ -23,68 +29,63 @@
 		{% endblock %}
 	</head>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class= "navbar-nav">
-	  
-        <li class="nav-item active">
-          <a class="nav-link" href="{{path('home')}}">Home
-                <span class="sr-only">(current)</span>
-              </a>
-					{% if app.user %}
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="{{path('home')}}">Home
+						<span class="sr-only">(current)</span>
+					</a>
+				</li>
+				{# {% if app.user %} #}
+					<li class="nav-item">
+						<a class="nav-link" title="Consultez tous clients" href="{{ path('client_index')}}">Clients</a>
+					</li>
+					
+					<div class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Voitures
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+							<a class="dropdown-item" href="{{ path('voiture_index')}}">Liste des voitures</a>
+							<a class="dropdown-item" href="{{ path('voiture_new')}}">Ajouter une voiture</a>
+						</ul>
+					</div>
+							
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('parking_index')}}">Parkings</a>
+					</li>	
+				{# {% endif %} #}
+			</ul>		
+			<ul class="navbar-nav ml-auto">
+				{% if app.user %}
+					{% if is_granted('ROLE_ADMIN') %}
 						<li class="nav-item">
-							<a class="nav-link" title="Consultez tous clients" href="{{ path('client_index')}}">Clients</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('facture_index')}}">Factures</a>
-						</li>
-                        <li class="nav-item">
-							<a class="nav-link" href="{{ path('contrat_index')}}">Contrats</a>
-						</li>
-
-                        <div class="nav-item dropdown active">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Voitures
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-								<a class="dropdown-item" href="{{ path('voiture_index')}}">Liste des voitures</a>
-								<a class="dropdown-item" href="{{ path('voiture_new')}}">Ajouter une voiture</a>
-							</ul>
-						</div>
-								
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('parking_index')}}">Parkings</a>
-						</li>	
-					{% endif %}
-				
-					{% if app.user %}
-						{% if is_granted('ROLE_ADMIN') %}
-							<li class="nav-item">
-								<a class="nav-link" href="/admin">Admin.</a>
-							</li>
-						{% endif %}
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_logout')}}">Se déconnecter</a>
-						</li>
-					{% else %}
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_login')}}">Se connecter</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_register')}}">S'enregistrer</a>
+							<a class="nav-link" href="/admin">Admin.</a>
 						</li>
 					{% endif %}
-
-		</u>		
-	</div>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_logout')}}">Se déconnecter</a>
+					</li>
+				{% else %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_login')}}">Se connecter</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_register')}}">S'enregistrer</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>
 	</nav>
 
 
-	 {% block body %}{% endblock %}
+{% block body %}
+{% endblock %}
 
 	
-	</html>
+</html>
 

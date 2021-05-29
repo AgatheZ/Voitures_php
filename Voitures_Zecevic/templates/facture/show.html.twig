@@ -3,40 +3,46 @@
 {% block title %}Facture{% endblock %}
 
 {% block body %}
-    <h1>Facture</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ facture.id }}</td>
-            </tr>
-            <tr>
-                <th>Numfacture</th>
-                <td>{{ facture.numfacture }}</td>
-            </tr>
-            <tr>
-                <th>DateFacture</th>
-                <td>{{ facture.dateFacture ? facture.dateFacture|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>KmCompteur</th>
-                <td>{{ facture.kmCompteur }}</td>
-            </tr>
-            <tr>
-                <th>MontantHT</th>
-                <td>{{ facture.montantHT }}</td>
-            </tr>
-            <tr>
-                <th>MontantTTC</th>
-                <td>{{ facture.montantTTC }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container-fluid px-5">
+        <h2 class="text-center font-weight-light mt-4 mb-5">Mes factures</h2>
 
-    <a href="{{ path('facture_index') }}">back to list</a>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Numéro de facture</th>
+                    <th>Date de facturation</th>
+                    <th>Distance parcourue</th>
+                    <th>Montant HT</th>
+                    <th>Montant TTC</th>
+                    <th></th>
+                </tr>
+                {% for facture in factures %}
+                <tr>
+                <div style="text-align:center;">
+                    <td>{{ facture.numfacture }}</td>
+                    <td>{{ facture.dateFacture ? facture.dateFacture|date('d-m-Y') : '' }}</td>
+                    <td>{{ facture.kmCompteur }} km</td>
+                    <td>{{ facture.montantHT }} €</td>
+                    <td>{{ facture.montantTTC }} €</td>
+                    <td>
+                        <div class="d-inline-flex align-items-center">
+                            <a title="Modifier la facture" class="mr-2" href="{{ path('facture_edit', {'id': facture.id}) }}">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
 
-    <a href="{{ path('facture_edit', {'id': facture.id}) }}">edit</a>
+                            {{ include('facture/_delete_form.html.twig') }}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="mt-5">
+            <a href="{{ path('facture_index')}}"> → Voir toutes les factures</a>
+        </div>
+    </div>
 
-    {{ include('facture/_delete_form.html.twig') }}
+
+
 {% endblock %}

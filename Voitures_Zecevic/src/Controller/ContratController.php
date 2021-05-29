@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Contrat;
 use App\Form\ContratType;
 use App\Repository\ContratRepository;
+use App\Repository\ClientRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -51,10 +52,11 @@ class ContratController extends AbstractController
     /**
      * @Route("/{id}", name="contrat_show", methods={"GET"})
      */
-    public function show(Contrat $contrat): Response
+    public function show(int $id, ContratRepository $contratRepository, ClientRepository $clientRepository): Response
     {
+        $client = $clientRepository->findOneBy(array('id' => $id));
         return $this->render('contrat/show.html.twig', [
-            'contrat' => $contrat,
+            'contrats' => $contratRepository->findBy(array('Client' => $client)),
         ]);
     }
 
